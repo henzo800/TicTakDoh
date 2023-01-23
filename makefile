@@ -9,3 +9,4 @@ link: main.o utils.o
 	gcc -g $(OBJ) `pkg-config --cflags --libs gtk+-3.0` -o out
 clean:
 	rm -f *.o
+	rm -f out
