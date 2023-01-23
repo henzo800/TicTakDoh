@@ -79,14 +79,30 @@ int checkGridForWin(){
     if(gameBoard[2][0] == PlayerTurn && gameBoard[1][1] == PlayerTurn && gameBoard[0][2] == PlayerTurn){
             return PlayerTurn;
     }
+    int isStale = 1;
+    for(i = 0; i<3; i++){
+        if(gameBoard[i][0] == None || gameBoard[i][1] == None || gameBoard[i][2] == None){
+            isStale = 0;
+        }
+    if(gameBoard[0][i] == None || gameBoard[1][i] == None || gameBoard[2][i] == None){
+            isStale = 0;
+        }
+    }
+    if(isStale == 1){
+        return -1;
+    }
     return None;
     
 }
 
 void updateStatus(int isWinner, int player) {
-    char txtBuf[8];
+    char txtBuf[10];
     if(isWinner == 1){
-        snprintf(txtBuf, 8, "%c Wins", numToChar(player));
+        if(player == None){
+            snprintf(txtBuf, 10, "Stalemate");
+        }else{
+            snprintf(txtBuf, 8, "%c Wins", numToChar(player));
+        }
     }else{
         snprintf(txtBuf, 8, "%c Turn", numToChar(player));
     }
@@ -122,6 +138,11 @@ static void tileIsClicked(struct intVector2 *vec)
             updateStatus(1, O);
             PlayerTurn = None;
             break;
+        case -1:
+            printf("Stalemate");
+            printf("\n");
+            updateStatus(1, None);
+            PlayerTurn = None;
     }
     if(PlayerTurn == None){
         return;
