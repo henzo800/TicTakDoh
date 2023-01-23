@@ -1,0 +1,9 @@
+{
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/henry/Documents/TicTakDoh",
+            "binaryPath": "/home/henry/Documents/TicTakDoh/out",
+            "binaryArgs": []
+        }
+    ]
+}
