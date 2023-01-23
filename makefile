@@ -6,7 +6,7 @@ utils.o: utils.c
 main.o: main.c utils.o
 	gcc -g -c main.c `pkg-config --cflags --libs gtk+-3.0` -o main.o
 link: main.o utils.o
-	gcc -g $(OBJ) `pkg-config --cflags --libs gtk+-3.0` -o out
+	gcc -g $(OBJ) `pkg-config --cflags --libs gtk+-3.0` -o build.out
 clean:
 	rm -f *.o
-	rm -f out
+	rm -f build.out
